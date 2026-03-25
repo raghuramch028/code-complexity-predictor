@@ -13,7 +13,7 @@ print("---------------------------------------------------------")
 MODEL_FILE_ID = "1eFqWSvXSl-bcaPXh6LCG2uQmBmEF5GGJ"
 
 # 2. Google Drive File ID for label_encoder.pkl 
-ENCODER_FILE_ID = "1S_zqbzkMNVuYnQlopMmrRRujIOeF5v2q"RujIOeF5v2q"
+ENCODER_FILE_ID = "1S_zqbzkMNVuYnQlopMmrRRujIOeF5v2q"
 
 if not os.path.exists("best_model.pt"):
     if MODEL_FILE_ID == "YOUR_MODEL_FILE_ID_HERE":
