@@ -10,12 +10,10 @@ print("---------------------------------------------------------")
 # The File ID is: 1A2B3C4D5E
 
 # 1. Google Drive File ID for best_model.pt
-MODEL_FILE_ID = "YOUR_MODEL_FILE_ID_HERE"
+MODEL_FILE_ID = "1eFqWSvXSl-bcaPXh6LCG2uQmBmEF5GGJ"
 
-# 2. Google Drive File ID for label_encoder.pkl (if you didn't commit it)
-# By default, I am leaving the Hugging Face link here just for the 1KB encoder so you don't have to upload it twice.
-# If you want it from GDrive too, uncomment and put the ID!
-# ENCODER_FILE_ID = "YOUR_ENCODER_FILE_ID_HERE"
+# 2. Google Drive File ID for label_encoder.pkl 
+ENCODER_FILE_ID = "YOUR_ENCODER_FILE_ID_HERE"
 
 if not os.path.exists("best_model.pt"):
     if MODEL_FILE_ID == "YOUR_MODEL_FILE_ID_HERE":
@@ -29,10 +27,11 @@ if not os.path.exists("best_model.pt"):
 else:
     print("✅ best_model.pt already exists locally. Skipping download.")
 
-# Download tiny encoder either from GitHub or HF (it's only 1KB so it doesn't cause LFS issues)
 if not os.path.exists("label_encoder.pkl"):
-    import urllib.request
-    print("Downloading label_encoder.pkl...")
-    url_le = "https://huggingface.co/spaces/raghuram00/code-complexity-predictor/resolve/main/label_encoder.pkl"
-    urllib.request.urlretrieve(url_le, "label_encoder.pkl")
+    if ENCODER_FILE_ID == "YOUR_ENCODER_FILE_ID_HERE":
+        print("❌ ERROR: You did not paste your Google Drive tracking ID for label_encoder.pkl!")
+        exit(1)
+        
+    print("Downloading label_encoder.pkl from Google Drive...")
+    gdown.download(id=ENCODER_FILE_ID, output="label_encoder.pkl", quiet=False)
     print("✅ Encoder downloaded successfully!")
