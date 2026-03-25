@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: code-complexity-predictor
+    env: docker
+    instanceCT: 1
+    plan: free
