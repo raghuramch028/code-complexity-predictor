@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Complexity Predictor</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <span class="logo-icon">⚡</span>
+                <h1>ComplexityPredictor</h1>
+            </div>
+            <p>Analyze your code's Big-O time and space complexity instantly.</p>
+        </header>
+        
+        <main>
+            <div class="editor-section">
+                <div class="editor-header">
+                    <span>Code Editor</span>
+                    <div class="circles"><i></i><i></i><i></i></div>
+                </div>
+                <textarea id="codeInput" placeholder="Paste your Java, Python, C++, or any other code here..." spellcheck="false"></textarea>
+                <div class="actions">
+                    <button id="analyzeBtn">Analyze Complexity <span>→</span></button>
+                </div>
+            </div>
+
+            <div class="result-section" id="resultSection" style="display: none;">
+                <div class="result-card">
+                    <h2>Analysis Result</h2>
+                    <div id="loading" class="loading" style="display: none;">
+                        <div class="spinner"></div>
+                        <p>Analyzing logic...</p>
+                    </div>
+                    <div id="output" class="output"></div>
+                </div>
+            </div>
+        </main>
+        
+        <footer>
+            <p>Powered by Advanced AI</p>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
