@@ -43,7 +43,7 @@ ${code}
         res.json({ result: response.text });
     } catch (error) {
         console.error('Error hitting Gemini API:', error);
-        res.status(500).json({ error: 'Failed to analyze code complexity' });
+        res.status(500).json({ error: `Backend Error: ${error.message}` });
     }
 });
 
