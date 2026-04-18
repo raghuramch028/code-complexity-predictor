@@ -35,10 +35,24 @@ Code:
 ${code}
         `;
 
-        const response = await ai.models.generateContent({
-            model: 'gemini-2.5-flash',
-            contents: prompt,
-        });
+        let response;
+        const maxRetries = 3;
+        for (let attempt = 1; attempt <= maxRetries; attempt++) {
+            try {
+                response = await ai.models.generateContent({
+                    model: 'gemini-1.5-flash',
+                    contents: prompt,
+                });
+                break; // Success, break out of loop
+            } catch (err) {
+                console.error(`Attempt ${attempt} failed:`, err.message);
+                if (attempt === maxRetries) {
+                    throw err; // Rethrow if all retries fail
+                }
+                // Wait for 1 second before retrying
+                await new Promise(resolve => setTimeout(resolve, 1000));
+            }
+        }
 
         res.json({ result: response.text });
     } catch (error) {
